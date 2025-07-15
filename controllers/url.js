@@ -14,7 +14,9 @@ export async function handleGenerateShortURL(req, res){
     await newEntry
     .save()
     .then((newEntry)=>{
-        res.status(201).json({newEntry})
+        res.render('home',{
+            id:newEntry.shortId
+        })
     })
     .catch((err)=>{
         console.log(err)
