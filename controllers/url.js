@@ -31,6 +31,7 @@ export async function handleRedirectToRealURL(req, res){
             visitHistory:Date.now()
         }
     })
+    
     res.redirect(`https://${urlEntry.redirectUrl}`)
 }
 export async function handleGetURLVisitHistory(req, res){

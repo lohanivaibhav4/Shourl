@@ -8,5 +8,11 @@ router.get('/', async (req, res)=>{
         urls: allUrls
     })
 })
+router.get('/register', async(req, res)=>{
+    res.render('register')
+})
+router.get('/login', async(req, res)=>{
+    res.render('login')
+})
 const staticRouter = router
 export default staticRouter

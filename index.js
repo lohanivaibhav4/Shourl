@@ -5,6 +5,7 @@ import { configDotenv } from 'dotenv';
 import connectDB from './db.js';
 import urlRouter from './routes/url.js';
 import staticRouter from './routes/staticRouter.js';
+import userRouter from './routes/user.js';
 
 configDotenv()
 const app = express();
@@ -23,6 +24,7 @@ connectDB(process.env.MONGO_URI)
 //ROUTES
 app.use('/url',urlRouter)
 app.use('/', staticRouter)
+app.use('/user', userRouter)
 
 
 //START SERVER
