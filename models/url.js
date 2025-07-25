@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { model } from "mongoose";
 
 
 const urlSchema = mongoose.Schema({
@@ -14,6 +14,10 @@ const urlSchema = mongoose.Schema({
     visitHistory:{
         type:[Date()],
         default:[]
+    },
+    createdBy:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref: 'USER'
     }
  },{timestamps:true})
 

@@ -9,7 +9,8 @@ export async function handleGenerateShortURL(req, res){
     }
     const newEntry = await new URL({
         shortId: nanoid(8),
-        redirectUrl: body.redirectUrl
+        redirectUrl: body.redirectUrl,
+        createdBy:req.user._id
     })
     await newEntry
     .save()
