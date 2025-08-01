@@ -1,18 +1,14 @@
-import { getUser } from "../services/auth.js"
+import jwt from 'jsonwebtoken'
+import { configDotenv } from 'dotenv'
+configDotenv()
 
-export default async function authRequired(req, res, next){
-    const userUid = req.cookies.uid
-    if(!userUid) return res.redirect('/login')
+export default function authRequired(req, res, next){
+    const token = req.cookies?.token
+    if(!token){
+        return res.redirect('/login')
+    }
     
-    const user = getUser(userUid)
-    if(!user) return res.redirect('/login')
-
-    req.user = user
-    next()
-}
-export async function checkAuth(req, res, next){
-    const userUid = req.cookies.uid
-    const user = getUser(userUid)
+    const user = jwt.verify(token, process.env.JWT_SECRET)
     req.user = user
     next()
 }

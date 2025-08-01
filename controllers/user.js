@@ -1,14 +1,18 @@
 import USER from "../models/user.js";
 import mongoose from "mongoose";
-import { v4 as uuidv4 } from 'uuid'
-import { setUser, getUser } from "../services/auth.js";
+import bcrypt from "bcryptjs";
+import jwt from 'jsonwebtoken'
+import { configDotenv } from "dotenv";
+configDotenv()
 
 export async function handleUserRegistration(req, res){
     const { name, email, password } = req.body
+    const hashedPassword = await bcrypt.hash(password, 10)
+
     const newUser = await new USER({
         name,
         email,
-        password
+        password: hashedPassword
     })
     newUser
     .save()
@@ -18,14 +22,21 @@ export async function handleUserRegistration(req, res){
 }
 export async function handleUserLogin(req, res){
     const { email, password } = req.body
-    const user = await USER.findOne({email, password})
+    const user = await USER.findOne({email})
     if(!user){
         return res.render("login",{
             error: "Invalid Username Or Password"
         })
     }
-    const sessionId = uuidv4()
-    setUser(sessionId, user)
-    res.cookie('uid', sessionId)
+    const passwordMatched = await bcrypt.compare(password, user.password)
+
+    if(!passwordMatched){
+        return res.render("login",{
+            error: "Invalid Username Or Password"
+        })
+    }
+    const token = jwt.sign({ _id: user._id, email: user.email }, process.env.JWT_SECRET, {expiresIn:"30d"})
+    res.cookie("token", token)
     res.redirect('/')
+    
 }

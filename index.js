@@ -7,7 +7,8 @@ import urlRouter from './routes/url.js';
 import staticRouter from './routes/staticRouter.js';
 import userRouter from './routes/user.js';
 import cookieParser from 'cookie-parser';
-import authRequired, { checkAuth } from './middlewares/authRequired.js';
+import authRequired from './middlewares/authRequired.js';
+
 
 configDotenv()
 const app = express();
@@ -25,8 +26,8 @@ app.use(cookieParser())
 connectDB(process.env.MONGO_URI)
 
 //ROUTES
-app.use('/url', authRequired ,urlRouter)
-app.use('/', checkAuth, staticRouter)
+app.use('/url', authRequired, urlRouter)
+app.use('/', staticRouter)
 app.use('/user', userRouter)
 
 

@@ -7,6 +7,7 @@ export async function handleGenerateShortURL(req, res){
     if(!body){
         res.status(401).json({error:"Redirect URL Required!"})
     }
+    
     const newEntry = await new URL({
         shortId: nanoid(8),
         redirectUrl: body.redirectUrl,
