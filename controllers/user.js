@@ -35,7 +35,7 @@ export async function handleUserLogin(req, res){
             error: "Invalid Username Or Password"
         })
     }
-    const token = jwt.sign({ _id: user._id, email: user.email }, process.env.JWT_SECRET, {expiresIn:"30d"})
+    const token = jwt.sign({ _id: user._id, email: user.email, role: user.role }, process.env.JWT_SECRET, {expiresIn:"30d"})
     res.cookie("token", token)
     res.redirect('/')
     
