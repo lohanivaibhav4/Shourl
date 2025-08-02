@@ -13,7 +13,7 @@
 
 **Transform long URLs into sleek, shareable links with advanced analytics and user management.**
 
-[🚀 Live Demo](https://shourl-eight.vercel.app/) • [📖 Documentation](#features) • [🛠️ Installation](#installation)
+[🚀 Live Demo](https://www.google.com) • [📖 Documentation](#features) • [🛠️ Installation](#installation)
 
 ### 🧪 **Test Credentials**
 Try the live demo with these test accounts:
