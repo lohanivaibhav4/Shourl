@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../assets/favicon.png">
-    <style>
-        body{
-            font-family: Tahoma, Geneva, Verdana, sans-serif;
-        }
-    </style>
-    <title>Register</title>
-</head>
-<body>
-    <div>
-        <h1>Create Account</h1>
-        <form action="/user/register" method="POST">
-            <label for="name">Name</label>
-            <input type="text" name="name" required>
-            <label for="email">Email</label>
-            <input type="email" name="email" required>
-            <label for="password">Password</label>
-            <input type="password" name="password" required>
-            <button type="submit">Submit</button>
+<head></head>
+<body class="auth-page">
+    <div class="container auth-container">
+        <header class="header">
+            <h1>Create Account</h1>
+        </header>
+
+        <form action="/user/register" method="POST" class="auth-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required class="form-control" placeholder="John Doe" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required class="form-control" placeholder="you@example.com" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
         </form>
-        <a href="/">Home</a>
+
+        <div class="alt-link">
+            <a href="/login">Login</a>
+        </div>
     </div>
 </body>
 </html>

@@ -9,7 +9,7 @@ export default function checkAuthorization(req, res, next){
 
     const user = jwt.verify(token, process.env.JWT_SECRET)
     req.user = user
-    if(!req.user.role == 'admin')
-        return res.redirect('/')
+    if(req.user.role != 'admin')
+        return res.redirect('/?msg=access-denied')
     next()
 }

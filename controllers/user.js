@@ -25,6 +25,7 @@ export async function handleUserLogin(req, res){
     const user = await USER.findOne({email})
     if(!user){
         return res.render("login",{
+            title:'Login',
             error: "Invalid Username Or Password"
         })
     }
@@ -32,6 +33,7 @@ export async function handleUserLogin(req, res){
 
     if(!passwordMatched){
         return res.render("login",{
+            title:'Login',
             error: "Invalid Username Or Password"
         })
     }

@@ -17,6 +17,7 @@ export async function handleGenerateShortURL(req, res){
     .save()
     .then((newEntry)=>{
         res.render('home',{
+            title:'Generated',
             id:newEntry.shortId
         })
     })
