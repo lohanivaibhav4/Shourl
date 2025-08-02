@@ -47,3 +47,6 @@ app.use('/user', userRouter)
 app.listen(PORT,()=>{
     console.log(`Server Started At Port ${PORT}`)
 })
+
+// Export for Vercel
+export default app;
