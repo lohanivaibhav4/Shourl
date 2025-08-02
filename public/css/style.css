@@ -227,12 +227,6 @@ body.auth-page {
 .alt-link a:hover {
     text-decoration: underline;
 }
-.logout-btn{
-    border: none;
-    background-color: white;
-    font-family: inherit;
-    font-size: inherit;
-}
 
 .alert {
   padding: 1rem 1.5rem;

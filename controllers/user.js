@@ -42,3 +42,7 @@ export async function handleUserLogin(req, res){
     res.redirect('/')
     
 }
+export async function handleUserLogout(req, res){
+    res.clearCookie('token')
+    res.redirect('/login?msg=Logged out successfully');
+}

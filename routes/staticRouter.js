@@ -11,11 +11,9 @@ router.get('/admin/urls', checkAuthorization, async (req, res)=>{
     const allUrls = await URL.find({})
     res.render('home',{
         title:'Admin',
-        loggedIn:true,
         urls: allUrls
     })
 })
-
 
 router.get('/', authRequired ,async (req, res)=>{
     if(!req.user) return res.redirect('/login')
@@ -24,7 +22,6 @@ router.get('/', authRequired ,async (req, res)=>{
     
     res.render('home',{
         msg:req.query.msg,
-        loggedIn:true,
         title:'Shourl',
         urls: allUrls
     })

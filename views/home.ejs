@@ -62,11 +62,9 @@
         </div>
 
         <div class="auth-links">
-            <% if (loggedIn) { %>
-                <button class="auth-link logout-btn">Logout</button>
-                <a href="/admin/urls" class="auth-link">Admin</a>
-                <a href="/" class="auth-link">Home</a>
-            <% } %>  
+            <a href="/" class="auth-link">Home</a>
+            <a href="/admin/urls" class="auth-link">Admin</a>
+            <a href="/user/logout" class="auth-link">Logout</a>
         </div>
     </div>
 </body>
